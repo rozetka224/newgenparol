@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Профиль пользователя</h1>
+            <div class="user-info">
+                <a href="{{ url_for('generate_password') }}">Генератор паролей</a> |
+                <a href="{{ url_for('logout') }}">Выйти</a>
+            </div>
+        </header>
+
+        <div class="profile-info">
+            <div class="profile-card">
+                <h2>Информация о пользователе</h2>
+                <p><strong>Имя пользователя:</strong> {{ user['username'] }}</p>
+                <p><strong>Дата регистрации:</strong> {{ user['created_at'] }}</p>
+            </div>
+        </div>
+
+        <p><a href="{{ url_for('index') }}">← На главную</a></p>
+    </div>
+</body>
+</html>

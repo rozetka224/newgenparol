@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор паролей</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Добро пожаловать в генератор паролей!</h1>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <main class="main-content">
+            <div class="welcome-section">
+                <p>Безопасные и надежные пароли для ваших аккаунтов</p>
+                <div class="auth-buttons">
+                    {% if session.username %}
+                        <a href="{{ url_for('generate_password') }}" class="btn btn-primary">Генератор паролей</a>
+                        <a href="{{ url_for('profile') }}" class="btn btn-secondary">Профиль</a>
+                        <a href="{{ url_for('logout') }}" class="btn btn-outline">Выйти</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="btn btn-primary">Войти</a>
+                        <a href="{{ url_for('register') }}" class="btn btn-secondary">Регистрация</a>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
